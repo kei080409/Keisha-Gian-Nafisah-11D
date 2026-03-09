@@ -2,72 +2,107 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewsport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Usaha Buku</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Profil Usaha Buku - Kei's Bücherhauss</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<nav>
-    <a href="index.html">Beranda</a>
-    <a href="produk.html">Produk</a>
-    <a href="bedah-buku.html">Bedah Buku</a>
-    <a href="testimoni.html">Testimoni</a>
-    <a href="tampil-testimoni.html">Testimoni Pembeli</a>
-</nav>
-<h1>Inkvine</h1>
-<main class="formulir">
-<h2>Berikan testimoni anda</h2>
-<form id="formTestimoni">
-<label for="nama">Nama:</label>
-<input type="text" id="nama" name="nama" required placeholder="Nama lengkap">
 
-<label for="asal">Asal sekolah/ Instansi/ Komunitas:</label>
-<input type="text" id="asal" name="asal">
+    <header>
+        <img src="beige header.jpg" alt="Header Kei's Bücherhauss" width="1312" height="300" style="max-width: 100%; height: auto;">
+    </header>
 
+    <nav>
+        <a href="index.html">Beranda</a> 
+        <a href="produk.html">Produk</a>
+        <a href="bedah-buku.html">Bedah Buku</a>
+        <a href="testimoni.html">Testimoni</a>
+        <a href="tampil-testimoni.html">Testimoni Pembeli</a>
+    </nav>
 
-<label for="email">Email:</label>
-<input type="email" id="email" name="email" required placeholder="email@example.com">
+    <main>
+        <h1>Kei's Bücherhauss</h1>
+        <h2>Willkommen im Kei's Bücherhaus</h2>
+        <p>
+            Kei's Bucherhauss adalah rumah bagi para pencinta buku, tempat di mana cerita, ide, dan pengetahuan bertemu. 
+            Di sini, pengunjung dapat menemukan berbagai pilihan buku, mulai dari novel, buku pelajaran, hingga pengetahuan umum.
+        </p>
 
-<label for="judul">Judul buku yang dibeli:</label>
-<input type="text" id="judul" name="judul" >
+       <form id="form-testimoni">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" required placeholder="Nama lengkap">
 
-<label for="rating buku">Rating buku (1-5):</label>
-<input type="number" id="rating" name="rating" required placeholder="rating"> 
+            <label for="asal">Asal (Sekolah/Instansi/Komunitas):</label>
+            <input type="text" id="asal" required placeholder="Contoh: SMA 1 Jakarta">
 
-<label for="pesan">Testimoni Anda:</label>
-<textarea id="pesan" name="pesan" required placeholder="Tulis pengalaman Anda..." rows="5"></textarea>
- 
-<button type="submit">Kirim Testimoni</button>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required placeholder="email@example.com">
 
-</form>
-</footer>
-<script>   
-    document.getElementById('formTestimoni').addEventListener('submit', function(e) {
-        e.preventDefault();
+            <label for="judul">Judul Buku yang Dibeli:</label>
+            <input type="text" id="judul" required placeholder="Judul buku">
 
-        const nama = document.getElementById('nama').value;
-        const asal = document.getElementById('asal').value;
-        const email = document.getElementById('email').value;
-        const judul = document.getElementById('judul').value;
-        const rating  = document.getElementById('rating').value;
-        const pesan = document.getElementById('pesan').value;
+            <label for="rating">Rating Buku (1-5):</label>
+            <input type="number" id="rating" min="1" max="5" required placeholder="1-5">
 
-        const dataBaru = {nama, asal, email, judul, rating, pesan};
-        // Ambil list dari localStorage
-        const testimoniList =
-        JSON.parse(localStorage.getItem('testimoniList')) || [];
+            <label for="pesan">Testimoni Anda:</label>
+            <textarea id="pesan" required placeholder="Tulis pengalaman anda..." rows="5"></textarea>
 
-        // Tambahkan testimoni baru
-        testimoniList.push(dataBaru);
+            <button type="submit">Kirim Testimoni</button>
+        </form>
+    </main>
 
-        // Simpan kembali ke localStorage
-        localStorage.setItem('testimoniList', JSON.stringify(testimoniList));
+    <script>
+        document.getElementById('form-testimoni').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        // Arahkan ke halaman konfirmasi
-        window.location.href = 'proses-testimoni.html';
-    });
-        
-</script>
-</main>
+           
+            const nama = document.getElementById('nama').value;
+            const asal = document.getElementById('asal').value;
+            const email = document.getElementById('email').value;
+            const pesan = document.getElementById('pesan').value;
+            const judul = document.getElementById('judul').value;
+            const rating = document.getElementById('rating').value;
+
+          
+            const dataBaru = { nama, asal, email, pesan, judul, rating };
+            const testimoniList = JSON.parse(localStorage.getItem('testimonilist')) || [];
+            testimoniList.push(dataBaru);
+            localStorage.setItem('testimonilist', JSON.stringify(testimoniList));
+
+           
+            alert("Terima kasih, " + nama + "! Testimoni Anda telah berhasil terkirim.");
+
+          
+            window.location.href = 'tampil-testimoni.html';
+        });
+    </script>
+
+</body>
+</html>
+
+    <script>
+        document.getElementById('form-testimoni').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nama = document.getElementById('nama').value;
+            const asal = document.getElementById('asal').value;
+            const email = document.getElementById('email').value;
+            const pesan = document.getElementById('pesan').value;
+            const judul= document.getElementById('judul').value;
+            const rating= document.getElementById('rating').value;
+
+            const dataBaru = { nama, asal, email, pesan ,judul,rating};
+
+            //ambil list dari localStorage
+            const testimoniList = JSON.parse(localStorage.getItem('testimonilist')) || [];
+            //tambahkan testimoni baru
+            testimoniList.push(dataBaru);
+            //simpan kembali ke localStrorage
+            localStorage.setItem('testimonilist', JSON.stringify(testimoniList));
+            //Arahkan ke halaman konfirmasi
+            window.location.href = 'proses-testimoni.html';
+        });
+    </script>
+
 </body>
 </html>
