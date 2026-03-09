@@ -1,65 +1,74 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Profil Usaha Buku</title>
     <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body> <header>
+        <img src="Beige header.jpg" alt="header" width="1312" height="300">
+    </header>
+
+    <nav>
+        <a href="index.html">Beranda</a> 
+        <a href="produk.html">produk</a>
+        <a href="bedah-buku.html">Bedah Buku</a>
+        <a href="testimoni.html">Testimoni</a>
+        <a href="tampil-testimoni.html">Testimoni Pembeli</a>
+    </nav>
+
+    <h1>Kei's Bücherhauss</h1>
+    <h2>Willkommen im Kei's Bücherhaus</h2>
     
-<nav>
-    <a href="index.html">Beranda</a>
-    <a href="produk.html">Produk</a>
-    <a href="bedah-buku.html">Bedah Buku</a>
-    <a href="testimoni.html">Testimoni</a>
-    <a href="tampil-testimoni.html">Testimoni Pembeli</a>
-</nav>
+    <p>
+        Kei's Bucherhauss adalah rumah bagi para pencinta buku,
+        tempat di mana cerita, ide, dan pengetahuan bertemu.
+        Di sini, pengunjung dapat menemukan berbagai pilihan buku, mulai dari novel,
+        buku pelajaran, hingga pengetahuan umum. Dengan koleksi yang beragam dan suasana yang nyaman,
+        Kei's Bucherhauss hadir sebagai ruang yang menyenangkan untuk membaca, belajar, dan menikmati waktu bersama buku.
+    </p>
+
+</body> </html>
+
 <main class="formulir">
-<h2>Testimoni-testimoni pembeli :</h2>
-<div id="daftarTestimoni"></div>
-
-<button id="hapusSemua">Hapus Semua Testimoni</button>
-
+    <h2>Testimoni-testimoni Pembeli:</h2>
+    <div id="daftar testimoni"></div>
+    <button id="hapus Semua">Hapus Semua Testimoni</button>
+</div>
 
 <section>
-    <div id="daftarTestimoni"></div>
+    <div id="daftar Testimoni"></div>
 </section>
 </main>
 
 <footer>
-    <p>&copy; 2025 Inkvine</p>
+    <p>&copy; 2025 Kei'Bucherhauss</p>
 </footer>
 <script>
-    const container = document.getElementById('daftarTestimoni');
-    const testimoniList = JSON.parse(localStorage.getItem('testimoniList')) || [];
-    if (testimoniList.length === 0) {
-        container.innerHTML = "<p>Belum ada testimoni.</p>";
-    } else {
-        testimoniList.forEach((t, i) => {
-            const el = document.createElement('div');
-            el.className = 'testimoni-box' ;
-            el.innerHTML = `
+const container = document.getElementById('daftarTestimoni');
+const testimonilist = JSON.parse(localStorage.getItem('testimonilist')) || [];
+
+if (testimonilist.length === 0) {
+    container.innerHTML = "<p>Belum ada testimoni.</p>";
+} else {
+    testimonilist.forEach((t) => {
+        const el = document.createElement('div');
+        el.className = 'testimoni box';
+        el.innerHTML = `
             <p><strong>Nama:</strong> ${t.nama}</p>
-            <p><strong>Asal sekolah/ Instansi/ Komunitas:</strong> ${t.asal}</p>
             <p><strong>Email:</strong> ${t.email}</p>
-            <p><strong>Judul buku yang dibeli:</strong> ${t.judul}</p>
-            <p><strong>Rating buku:</strong> ${t.rating}</p>
-            <p><strong>Testimoni anda:</strong> ${t.pesan}</p>
+            <p><strong>Pesan:</strong> ${t.pesan}</p>
         `;
         container.appendChild(el);
-        });
-    }
-
-    document.getElementById("hapusSemua").addEventListener("click", function() {
-        const konfirmasi = confirm("Apakah Anda yakin ingin menghapus semua testimoni?")
-        if (konfirmasi) {
-            localStorage.removeItem("testimoniList");
-            location.reload();
-
-
-        }
     });
-            </script>
+}
+document.getElementById("hapusSemua").addEventListener("click",function(){
+    const konfirmasi= confirm("Apakah Anda yakin ingin menghapus semua testimoni?");
+    if(konfirmasi) {
+        localStorage.removeItem("testimonilist");
+        location.reload();
+    }
+});
+</script>
 </body>
 </html>
